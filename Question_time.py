@@ -6,6 +6,7 @@ Questions = ["What is 5 + 3?","What is the capital of France?","Which continent 
 answers = [(f"{5 + 3}"),(f"{"Paris"}"),(f"{"Antarctica"}"),(f"{(5*3)**2}"),(f"{"Ears"}")]
 correct_answers = []
 attempt = 0
+x = Questions.index(Questions[-1])
 
 for i in range(len(Questions)):
     print(f"{Questions[i]}")
@@ -20,9 +21,11 @@ for i in range(len(Questions)):
             print(f"{Questions[i]}")
             answer = input("Enter your answer: ")
             attempt +=1
-
-            if answer.capitalize() != answers[i] and attempt == max_attempt:
-                print("try the next question")
+            
+            if answer.capitalize() != answers[i] and attempt == max_attempt and i == x:
+                break
+            elif answer.capitalize() != answers[i] and attempt == max_attempt:
+                print("Wrong! try the next question")
                 break
             elif answer.capitalize() == answers[i]:
                 print("Correct")
